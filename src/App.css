@@ -1,0 +1,251 @@
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+
+.header-title,
+.header-subtitle {
+  text-align: center;
+}
+
+
+.header-subtitle {
+  color: rgba(61, 61, 61, 0.56);
+  font-size: 0.9rem;
+}
+
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+
+.input-container input {
+  margin-right: 2%;
+  width: 100%;
+  max-width: 300px;
+  padding: .36rem;
+  border: none;
+  outline: 1px solid #00000034;
+}
+
+
+input::placeholder {
+  opacity: 0.4;
+}
+
+
+input:active {
+  outline: 1px solid #00000034;
+}
+
+
+input[type="checkbox"] {
+  accent-color: #000;
+  transform: scale(1.5);
+  margin-right: 2%;
+}
+
+
+.add-btn {
+  color: #fff;
+  font-weight: 600;
+  background: #000;
+  border-radius: 10px;
+  border: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+
+.add-btn:hover {
+  background: #7b7b7b21;
+  color: #000;
+  cursor: pointer;
+}
+
+
+ p {
+  text-align: center;
+}
+
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: .45rem;
+}
+
+
+.task-card {
+  font-size: 1.5ch;
+  box-shadow: 0px 2px 10px #22222222;
+  padding: 0.55rem;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #000;
+  transition: transform 0.3s;
+}
+
+
+.task-card:hover {
+  transform: scale(1.03);
+}
+
+
+.del-btn-wrapper {
+  display: flex;
+  justify-content: end;
+}
+
+
+.del-btn {
+  background: none;
+  border: none;
+  padding: 5px;
+  transition: background 0.3s;
+}
+
+
+.del-btn:hover {
+  background: #7b7b7b21;
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+/* MOBILITY */
+
+/* wrap the input row on small screens */
+.input-container {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem; /* spacing */
+  padding-inline: 1rem;
+}
+
+
+.input-container input {
+  flex: 1 1 16rem;   /* grows but shrinkable */
+  max-width: none;  
+  min-width: 0;
+}
+
+
+.add-btn {
+  padding: 0.55rem 0.9rem;
+  line-height: 1;
+}
+
+
+.task-container {
+  padding-inline: 1rem;
+}
+
+
+
+.task-card {
+  border-radius: 12px;
+  font-size: clamp(0.95rem, 2.6vw, 1rem); 
+}
+
+
+/* ensure delete button meets ~44px tap target */
+.del-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+
+/* accessibility: clear focus styles for keyboard users */
+.add-btn:focus-visible,
+.del-btn:focus-visible,
+input:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+
+/* remove hover on touch devices */
+@media (hover: none) {
+  .add-btn:hover,
+  .del-btn:hover {
+    background: inherit;
+    color: inherit;
+  }
+  .task-card:hover {
+    transform: none;
+  }
+}
+
+
+/* devices */
+
+/* phones (≤480px) */
+@media (max-width: 480px) {
+  .header-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .input-container {
+    margin: 1rem auto;
+  }
+
+  /* stack input above button */
+  .input-container input {
+    flex-basis: 100%;
+    outline: none;
+  }
+  .add-btn {
+    flex: 1 1 100%;
+  }
+
+  /* tone down giant checkboxes a bit on tiny screens */
+  input[type="checkbox"] {
+    transform: scale(1.25);
+    margin-right: 0.6rem;
+  }
+
+  .task-card {
+    padding: 0.75rem;
+  }
+}
+
+/* tablets / small laptops (481–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .input-container {
+    gap: 0.75rem;
+   
+  }
+
+  .input-container input {
+    flex: 1 1 20rem;
+  }
+
+  .add-btn {
+    flex: 0 0 auto;
+  }
+}
+
+
+/* large screens (≥1024px) */
+@media (min-width: 1024px) {
+  .task-container {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+}
+  
+/* motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+  .task-card:hover {
+    transform: none !important;
+  }
+}
