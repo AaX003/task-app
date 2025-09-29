@@ -6,6 +6,7 @@ function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
+  // eslint-disable-next-line
   const [isComplete, setIsComplete] = useState(false);
 
   // Task Addition
