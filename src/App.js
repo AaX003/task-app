@@ -31,6 +31,16 @@ function App() {
     setTasks(completedTasks);
   };
 
+  const handleEnter = (event) => {
+    if (event.key === "Enter") {
+      if (task.trim() !== "") {
+      setTasks([...tasks, { name: task.trim(), isComplete: false}])
+      setTask("");
+      setIsComplete(false);
+    }
+    }
+  }
+
   return (
      <div className="container">
       <header>
@@ -45,9 +55,15 @@ function App() {
           type="text"
           value={task}
           onChange={(e) => setTask(e.target.value)}
+          onKeyDown={handleEnter}
           placeholder="What's the plan?"
         />
-        <button className="add-btn" onClick={AddTask}>Add Task</button>
+        <button 
+        className="add-btn" 
+        onClick={AddTask}
+        >
+          Add
+        </button>
       </div>
      
       {tasks.length === 0 
