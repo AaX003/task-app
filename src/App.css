@@ -1,7 +1,9 @@
-
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body {
-  background: linear-gradient(135deg, #e2ebf0, #cfd9df);
+  background: #e2ebf0;
   min-height: 100vh;
   display: flex;
   align-items: center;
